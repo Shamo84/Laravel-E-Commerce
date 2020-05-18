@@ -25,6 +25,8 @@ class VendorSeeder extends Seeder
         $newvendor->address = $faker->address;
         $newvendor->logo = "https://loremflickr.com/320/240";
         $newvendor->save();
+        $products = Product::inRandomOrder()->limit(rand(5, 12))->get();
+        $newvendor->products()->attach($products);
       }
     }
 }
